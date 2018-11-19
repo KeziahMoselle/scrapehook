@@ -19,9 +19,10 @@ class Webhook extends EventEmitter {
    * @param {object} data
    * @memberof Webhook
    */
-  observe (data) {
-    this.url = data.url
-    this.interval = data.interval || 5*60*1000
+  observe (url, options) {
+    if (!url) throw new Error('Missing first argument : url')
+    this.url = url
+    this.interval = options.interval || 5*60*1000
     this.firstRequest = true
     this.oldBody = ''
     this.scrape()
@@ -79,6 +80,18 @@ class Webhook extends EventEmitter {
       this.emit('diff')
       return false
     }
+  }
+
+
+  /**
+   * POST request to the provided POST url
+   * POST only if compare return false
+   * POST the data which changed
+   * 
+   * @memberof Webhook
+   */
+  post () {
+    // TODO
   }
   
 }
