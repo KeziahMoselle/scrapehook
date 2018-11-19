@@ -1,6 +1,6 @@
 const Webhook = require('./src/webhook')
 
-Webhook.start({
+Webhook.observe({
   url: 'https://keziahmoselle.fr/',
   interval: 10*1000
 })

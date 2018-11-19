@@ -9,12 +9,17 @@ const https = require('https')
  */
 class Webhook extends EventEmitter {
   /**
-   * Initialize the Webhook 
+   * Initialize the Webhook
+   * Set URL
+   * Set interval
+   * Set firstRequest to true
+   * Set oldBody
+   * Begin to scrape
    *
    * @param {object} data
    * @memberof Webhook
    */
-  start (data) {
+  observe (data) {
     this.url = data.url
     this.interval = data.interval || 5*60*1000
     this.firstRequest = true
