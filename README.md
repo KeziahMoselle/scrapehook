@@ -6,6 +6,7 @@
 
 - [ ] Add the Webhook POST url
 - [ ] Return `data` for the listener `diff` (contains what has changed)
+- [ ] Add `data` as a payload for the POST url
 
 ### Install
 `npm install @keziahmoselle/webhook`
