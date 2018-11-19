@@ -1,7 +1,17 @@
 {
-  "name": "webhook",
-  "version": "1.0.0",
+  "name": "@keziahmoselle/webhook",
+  "description": "get notified when the content of a website change.",
+  "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
-  "private": true
+  "private": false,
+  "author": "Keziah MOSELLE <keziah.moselle@gmail.com> (https://keziahmoselle.fr)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeziahMoselle/webhook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KeziahMoselle/webhook/issues"
+  },
+  "homepage": "https://github.com/KeziahMoselle/webhook#readme"
 }
