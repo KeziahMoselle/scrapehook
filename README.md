@@ -2,6 +2,11 @@
 
 ### In development...
 
+### Todos
+
+- [ ] Add the Webhook POST url
+- [ ] Return `data` for the listener `diff` (contains what has changed)
+
 ### Install
 `npm install @keziahmoselle/webhook`
 
@@ -39,8 +44,11 @@ The URL you want to observe
 ##### options
 Type: `Object`
 
-###### postUrl
-Type: `String`
+~~###### postUrl~~
+
+~~Type: `String`~~
+
+~~Send a POST request to `postUrl` with `data` as a payload~~
 
 ###### interval
 Type: `Number`
@@ -57,6 +65,6 @@ Event 'diff' is emitted when a website change
 ##### function
 Type: `Function`
 
-Argument: `data`
+~~Argument: `data`~~
 
-`data` contains what has changed
+~~`data` contains what has changed~~
