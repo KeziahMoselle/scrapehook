@@ -21,6 +21,7 @@ class Webhook extends EventEmitter {
    */
   observe (url, options) {
     if (!url) throw new Error('Missing first argument : url')
+    // TODO type check
     this.url = url
     this.interval = options.interval || 5*60*1000
     this.firstRequest = true
