@@ -48,7 +48,6 @@ class Webhook extends EventEmitter {
 
         response.on('end', () => {
           if (this.firstRequest) {
-            console.log('Set oldBody for the first time')
             this.oldBody = body
             return this.firstRequest = false
           }
