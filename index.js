@@ -111,23 +111,26 @@ class Webhook extends EventEmitter {
       const newContent = this.scrapeElement(oldBody)
       const oldContent = this.scrapeElement(body)
       if (newContent === oldContent) {
-        this.oldBody = body
         this.emit('nodiff')
-      } else {
         this.oldBody = body
+      } else {
         this.emit('update', {
           new: newContent,
           old: oldContent
         })
+        this.oldBody = body
       }
     } else {
       // Or check the entire body
       if (body === oldBody) {
-        this.oldBody = body
         this.emit('nodiff')
-      } else {
         this.oldBody = body
-        this.emit('update')
+      } else {
+        this.emit('update', {
+          new: body,
+          old: this.oldBody
+        })
+        this.oldBody = body
       }
     }
   }
