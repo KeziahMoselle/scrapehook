@@ -1,7 +1,7 @@
 {
   "name": "@keziahmoselle/webhook",
   "description": "get notified when the content of a website change.",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "index.js",
   "license": "MIT",
   "private": false,

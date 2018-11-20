@@ -5,8 +5,6 @@
 ### Todos
 
 - [ ] Add the Webhook POST url
-- [ ] Add `options.element` (Observe only this `element`)
-- [ ] Return `data` for the listener `diff` (contains what has changed)
 - [ ] Add `data` as a payload for the POST url
 
 ### Install
@@ -22,7 +20,7 @@ Webhook.on('nodiff', () => {
   // No changes detected
 })
 
-Webhook.on('diff', (data) => {
+Webhook.on('update', (data) => {
   // Changes detected
 })
 ```
@@ -62,8 +60,8 @@ Event 'nodiff' is emitted when a website does not change
 ##### function
 Type: `Function`
 
-#### .on('diff', function)
-Event 'diff' is emitted when a website change
+#### .on('update', function)
+Event 'update' is emitted when a website change
 ##### function
 Type: `Function`
 
