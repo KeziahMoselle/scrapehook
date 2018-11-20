@@ -19,13 +19,33 @@ class Webhook extends EventEmitter {
    * @param {object} data
    * @memberof Webhook
    */
-  observe (url, options) {
-    if (!url) throw new Error('Missing first argument : url')
-    // TODO type check
+  observe (url = '', options = {}) {
+    // Check if url is empty
+    if (url === '') throw new Error('Missing first argument : url')
+    // Check if url is passed (must be)
+    if (arguments.length === 0) throw new Error('Insufficient number of arguments')
+    // Check type of url (should be a string)
+    if (typeof url !== 'string') throw new TypeError(`Expected string, got ${typeof url} : url`)
+    // Check type of options
+    if (arguments.length === 2) {
+      // Check type of each key of options
+      // Check type of options (should be an object)
+      if (typeof options !== 'object') throw new TypeError(`Expected object, got ${typeof options}`)
+      // Check if interval is set
+      if (options.interval) {
+        // Check type of interval (should be a number)
+        if (typeof options.interval !== 'number') throw new TypeError(`Expected number, got ${typeof options.interval}`)
+      }
+    }
+    // Set parameters
     this.url = url
     this.interval = options.interval || 5*60*1000
+
+    // Set properties
     this.firstRequest = true
     this.oldBody = ''
+
+    // Start scraping
     this.scrape()
   }
 
