@@ -5,6 +5,7 @@
 ### Todos
 
 - [ ] Add the Webhook POST url
+- [ ] Add `options.element` (Observe only this `element`)
 - [ ] Return `data` for the listener `diff` (contains what has changed)
 - [ ] Add `data` as a payload for the POST url
 
