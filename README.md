@@ -19,7 +19,7 @@ Webhook.on('nodiff', () => {
 // Changes detected
 Webhook.on('update', (data) => {
   // Do something
-  data.now // New content
+  data.new // New content
   data.old // Old content
 })
 ```
@@ -84,7 +84,7 @@ Argument: `data` (Type: `Object`)
 
 ```js
 Webhook.on('update', (data) => {
-  console.log(data.now) // 'new content'
+  console.log(data.new) // 'new content'
   console.log(data.old) // 'old content'
 })
 ```
