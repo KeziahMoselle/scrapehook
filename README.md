@@ -1,9 +1,7 @@
 <h2 align="center">ScrapeHook</h2>
-
-### In development...
-
-### Install
-`npm install scrapehook`
+<p align="center">
+  <a href="https://nodei.co/npm/scrapehook/"><img src="https://nodei.co/npm/scrapehook.png"></a>
+</p>
 
 ### Usage
 ```js
