@@ -1,5 +1,5 @@
 {
-  "name": "@keziahmoselle/webhook",
+  "name": "scrapehook",
   "description": "get notified when the content of a website change.",
   "version": "0.4.0",
   "main": "index.js",
@@ -8,10 +8,10 @@
   "author": "Keziah MOSELLE <keziah.moselle@gmail.com> (https://keziahmoselle.fr)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KeziahMoselle/webhook.git"
+    "url": "git+https://github.com/KeziahMoselle/scrapehook.git"
   },
   "bugs": {
-    "url": "https://github.com/KeziahMoselle/webhook/issues"
+    "url": "https://github.com/KeziahMoselle/scrapehook/issues"
   },
-  "homepage": "https://github.com/KeziahMoselle/webhook#readme"
+  "homepage": "https://github.com/KeziahMoselle/scrapehook#readme"
 }

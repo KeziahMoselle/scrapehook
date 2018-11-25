@@ -2,14 +2,14 @@ const EventEmitter = require('events')
 const https = require('https')
 
 /**
- * Webhook class
+ * ScrapeHook class
  *
- * @class Webhook
+ * @class ScrapeHook
  * @extends {EventEmitter}
  */
-class Webhook extends EventEmitter {
+class ScrapeHook extends EventEmitter {
   /**
-   * Initialize the Webhook
+   * Initialize the ScrapeHook
    * Set URL
    * Set interval
    * Set firstRequest to true
@@ -17,7 +17,7 @@ class Webhook extends EventEmitter {
    * Begin to scrape
    *
    * @param {object} data
-   * @memberof Webhook
+   * @memberof ScrapeHook
    */
   observe (url = '', options = {}) {
     // Check if url is empty
@@ -67,7 +67,7 @@ class Webhook extends EventEmitter {
    * Executed every this.interval (default: 5min)
    * Call compare() when response end
    *
-   * @memberof Webhook
+   * @memberof ScrapeHook
    */
   scrape () {
     setInterval(() => {
@@ -103,7 +103,7 @@ class Webhook extends EventEmitter {
    * @param {string} body
    * @param {string} oldBody
    * @returns {boolean}
-   * @memberof Webhook
+   * @memberof ScrapeHook
    */
   compare (body, oldBody) {
     // Perform regex if an element has been precised
@@ -153,7 +153,7 @@ class Webhook extends EventEmitter {
    * POST only if compare return false
    * POST the data which changed
    * 
-   * @memberof Webhook
+   * @memberof ScrapeHook
    */
   post (payload) {
     const data = JSON.stringify(payload)
@@ -178,7 +178,7 @@ class Webhook extends EventEmitter {
    *
    * @param {string} body
    * @returns {string} content of `element`
-   * @memberof Webhook
+   * @memberof ScrapeHook
    */
   scrapeElement (body) {
     // Replace 'content' by (.*) -> Catch content in the element
@@ -191,4 +191,4 @@ class Webhook extends EventEmitter {
   
 }
 
-module.exports = new Webhook()
+module.exports = new ScrapeHook()
