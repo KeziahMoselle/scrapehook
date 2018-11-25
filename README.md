@@ -37,8 +37,8 @@ Webhook.observe('https://domain.com', {
 })
 ```
 
+---
 ### API
-
 #### .observe(url[, options])
 ##### url: `String` (The URL you want to observe)
 
@@ -47,6 +47,18 @@ Webhook.observe('https://domain.com', {
 - element: `String` (The element you want to watch)
 - interval: `Number` Default: `5 minutes`
 
+```js
+Webhook.observe('https://domain.com', {
+  postUrl: 'https://domain.com/post' // It will send a POST request to this URL which contains old & new data
+})
+```
+The POST request
+```json
+{
+  "new": "New data",
+  "old": "Old data"
+}
+```
 If you want to watch the title of a page for example :
 Note that `content` will be replaced by the actual content of the web page.
 ```js
@@ -54,16 +66,17 @@ Webhook.observe('https://domain.com', {
   element: '<h1>content</h1>'
 })
 ```
+Change the interval
 ```js
 Webhook.observe('https://domain.com', {
   interval: 60*60*1000 // It will scrape every 1 hour
 })
 ```
 
-#### .on('nodiff', function)
+---
+### Events
+#### nodiff
 Event 'nodiff' is emitted when a website does not change
-##### function
-Type: `Function`
 
 ```js
 Webhook.on('nodiff', () => {
@@ -71,16 +84,11 @@ Webhook.on('nodiff', () => {
 })
 ```
 
-#### .on('update', function)
+#### update
 Event 'update' is emitted when a website change
-##### function
-Type: `Function`
 
-Argument: `data` (Type: `Object`)
-
-`data.new` contains the new content
-
-`data.old` contains the old content
+- `data.new` contains the new content
+- `data.old` contains the old content
 
 ```js
 Webhook.on('update', (data) => {
