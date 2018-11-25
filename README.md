@@ -2,11 +2,6 @@
 
 ### In development...
 
-### Todos
-
-- [ ] Add the Webhook POST url
-- [ ] Add `data` as a payload for the POST url
-
 ### Install
 `npm install @keziahmoselle/webhook`
 
@@ -23,6 +18,7 @@ Webhook.on('nodiff', () => {
 
 // Changes detected
 Webhook.on('update', (data) => {
+  // Do something
   data.now // New content
   data.old // Old content
 })
@@ -36,44 +32,28 @@ Webhook.observe('https://domain.com', {
   // The element you want to watch
   // NOTE: `content` is a placeholder for the content you want to watch (it is required)
   element: '<title>content</title>',
-  // At which interval you want to scrape ?
-  // Default: 5 minutes
-  interval: 10*60*1000
+  // At which interval you want to scrape ? Default: 5 minutes
+  interval: 10*60*1000 // Scrape every 10 minutes
 })
 ```
 
 ### API
 
 #### .observe(url[, options])
-##### url
-Type: `String`
+##### url: `String` (The URL you want to observe)
 
-The URL you want to observe
+##### options: `Object`
+- postUrl `String` (Send a POST request to `postUrl` with `data` as a payload)
+- element: `String` (The element you want to watch)
+- interval: `Number` Default: `5 minutes`
 
-##### options
-Type: `Object`
-
-~~###### postUrl~~
-
-~~Type: `String`~~
-
-~~Send a POST request to `postUrl` with `data` as a payload~~
-
-###### element
-Type: `String`
-
-The element you want to watch. If you want to watch the title of a page for example :
+If you want to watch the title of a page for example :
+Note that `content` will be replaced by the actual content of the web page.
 ```js
 Webhook.observe('https://domain.com', {
   element: '<h1>content</h1>'
 })
 ```
-Note that `content` will be replaced by the actual content of the web page.
-
-###### interval
-Type: `Number`
-
-Default: `5 minutes`
 ```js
 Webhook.observe('https://domain.com', {
   interval: 60*60*1000 // It will scrape every 1 hour
@@ -85,6 +65,12 @@ Event 'nodiff' is emitted when a website does not change
 ##### function
 Type: `Function`
 
+```js
+Webhook.on('nodiff', () => {
+  console.log('Same content !')
+})
+```
+
 #### .on('update', function)
 Event 'update' is emitted when a website change
 ##### function
@@ -92,6 +78,13 @@ Type: `Function`
 
 Argument: `data` (Type: `Object`)
 
-`data.new` contains what has changed
+`data.new` contains the new content
 
 `data.old` contains the old content
+
+```js
+Webhook.on('update', (data) => {
+  console.log(data.now) // 'new content'
+  console.log(data.old) // 'old content'
+})
+```

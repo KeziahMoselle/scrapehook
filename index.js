@@ -108,8 +108,8 @@ class Webhook extends EventEmitter {
   compare (body, oldBody) {
     // Perform regex if an element has been precised
     if (this.element) {
-      const newContent = this.scrapeElement(oldBody)
-      const oldContent = this.scrapeElement(body)
+      const newContent = this.scrapeElement(body)
+      const oldContent = this.scrapeElement(oldBody)
       if (newContent === oldContent) {
         this.emit('nodiff')
         this.oldBody = body
@@ -118,6 +118,12 @@ class Webhook extends EventEmitter {
           new: newContent,
           old: oldContent
         })
+        if (this.postUrl) {
+          this.post({
+            new: newContent,
+            old: oldContent
+          })
+        }
         this.oldBody = body
       }
     } else {
@@ -130,6 +136,12 @@ class Webhook extends EventEmitter {
           new: body,
           old: this.oldBody
         })
+        if (this.postUrl) {
+          this.post({
+            new: body,
+            old: this.oldBody
+          })
+        }
         this.oldBody = body
       }
     }
@@ -143,8 +155,19 @@ class Webhook extends EventEmitter {
    * 
    * @memberof Webhook
    */
-  post () {
-    // TODO
+  post (payload) {
+    const data = JSON.stringify(payload)
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': data.length
+      }
+    }
+    const request = https.request(this.postUrl, options)
+    request.write(data)
+    request.on('error', (error) => new Error(error))
+    request.end()
   }
 
 
